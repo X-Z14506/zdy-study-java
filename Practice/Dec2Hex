@@ -1,0 +1,22 @@
+/*
+将十进制数转换为十六进制数
+例如：请输入一个十进制数：
+      1234
+      该十进制数的十六进制数形式为: 4D2
+ */
+public class Dec2Hex {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入一个十进制数");
+        int decimal = input.nextInt();
+        String string = "";
+        while (decimal != 0) {
+            int hexValue = decimal % 16;
+            char hexDigit = (hexValue <= 9 && hexValue >= 0) ?
+                    (char)(hexValue+'0') : (char)(hexValue - 10 + 'A');
+            string = hexDigit + string;
+            decimal = decimal / 16;
+        }
+        System.out.println("该十进制数的十六进制数形式为: "+string);
+    }
+}
