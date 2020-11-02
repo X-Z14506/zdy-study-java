@@ -4,6 +4,9 @@
       1234
       该十进制数的十六进制数形式为: 4D2
  */
+ 
+ import java.util.Scanner;
+ 
 public class Dec2Hex {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
