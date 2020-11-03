@@ -8,6 +8,10 @@
 
 public class StringReverse {
     public static String reverse(String string) {
+        //如果字符串为空，返回null
+        if (string == null) {
+            return null;
+        }
         //先把字符串转变为数组
         char[] array = string.toCharArray();
         //开始逆置
