@@ -11,7 +11,7 @@ class Node {
     }
 }
 
-public class SingleListTest01 {
+public class SingleList01 {
     public Node head;
         //删除链表中等于给定值val的所有节点；
     public Node removeAllVal(int val) {
