@@ -5,15 +5,16 @@
 
 */
    
-	public class Test02{   
+	public class WhileTest01{   
 		public static void main(String[] args){
-			int day = 0; double money = 0.0;
+		    int day = 0; double money = 0.0;
 		    while ( money < 100){ 
-				day++;
-		        money += 2.5;
-			    if ( day % 5 == 0){  
-				money -= 6;
+			   day++;
+		           money += 2.5;
+			   if ( day % 5 == 0){  
+		           money -= 6;
 			 } 
-		   }System.out.println("小芳经过" + day + "可以存到" + money	+ "元");
+		   }
+		 System.out.println("小芳经过" + day + "可以存到" + money	+ "元");
 		}
 	}
