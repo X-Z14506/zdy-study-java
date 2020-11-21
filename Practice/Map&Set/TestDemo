@@ -62,3 +62,31 @@ public class Main {
 //        重复的数字：43次数：2
 //        重复的数字：45次数：2
     }
+    
+    //给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+    public int singleNumber(int[] nums) {
+        //方法二：用异或方法
+        int ret = 0;
+        for (int i : nums) {
+            ret ^= i;
+        }
+        return ret;
+
+        /*方法一
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int i :nums) {
+            if (hashSet.contains(i)) {
+                hashSet.remove(i);
+            }else {
+                hashSet.add(i);
+            }
+        }
+        for (int i:nums) {
+            if (hashSet.contains(i)) {
+                return i;
+            }
+        }
+        return -1;
+
+         */
+    }
