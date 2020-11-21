@@ -1,0 +1,23 @@
+public class Main {
+    //1.list中存放10万个数据，找出第一个重复的数据
+    public static void main1(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Random random = new Random();
+
+        //给list存入10个随机数
+        for (int i = 0;i < 10_0000; i++) {
+            int num = random.nextInt(10_0000);
+            list.add(num);
+        }
+        //从get方法得到list中的值，如果set中存在这个值，则输出
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0;i < 10_0000;i++) {
+            if (set.contains(list.get(i))) {
+                System.out.println(list.get(i));
+                return;
+            }
+            else {
+                set.add(list.get(i));
+            }
+        }
+    }
