@@ -21,3 +21,44 @@ public class Main {
             }
         }
     }
+
+
+    //3.将10万个数据，统计重复出现的数据及次数；
+     static HashMap<Integer,Integer> map = new HashMap<>();
+    public  static void main2(String[] args) {
+        ArrayList<Integer> list1 = new ArrayList<>();
+        Random random = new Random();
+
+        //给list存入10个随机数
+        for (int i = 0;i < 50; i++) {
+            int num = random.nextInt(50);
+            list1.add(num);
+        }
+
+        //遍历list1
+        for (Integer key:list1) {
+            if (map.get(key) == null) {
+                map.put(key,1);
+            } else {
+                int val = map.get(key);
+                map.put(key,val+1);
+            }
+        }
+        for (Map.Entry<Integer,Integer>entry : map.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println("重复的数字："+entry.getKey()+"次数："+entry.getValue());
+            }
+        }
+//        重复的数字：1次数：2
+//        重复的数字：2次数：2
+//        重复的数字：6次数：2
+//        重复的数字：7次数：3
+//        重复的数字：18次数：3
+//        重复的数字：23次数：2
+//        重复的数字：25次数：3
+//        重复的数字：27次数：3
+//        重复的数字：40次数：3
+//        重复的数字：41次数：3
+//        重复的数字：43次数：2
+//        重复的数字：45次数：2
+    }
