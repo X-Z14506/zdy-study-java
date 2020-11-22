@@ -63,6 +63,9 @@ public class Main {
 //        重复的数字：45次数：2
     }
     
+    
+    
+    
     //给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
     public int singleNumber(int[] nums) {
         //方法二：用异或方法
@@ -138,6 +141,9 @@ public class Main {
         return map.get(head);
     }
 
+
+
+
  //771. 宝石与石头
     // 给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 
     // S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
@@ -163,5 +169,39 @@ public class Main {
         }
         return count;
     }
+    
+    
+    
+    
+    
+    
+    //旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。
+    //现在给出应该输入的一段文字、以及实际被输入的文字，请你列出
+    //肯定坏掉的那些键。
+    //输入：7_This_is_a_test   显示：_hs_s_a_es
+    //输出：7TI （即这三个键坏了）
+
+    public static void brokenKey(String strIn,String strAct) {
+        //1.把实际显示的字符 strAct 放到集合中
+        HashSet<Character> setAct = new HashSet<>();
+        for (char chAct:strAct.toUpperCase().toCharArray()) {
+            setAct.add(chAct);
+        }
+
+        //此时setAct中存放的就是实际显示出来的字符，即未坏掉的键
+        //2.遍历输入的字符串strIn,并且将坏掉的键放入另外一个集合
+
+        HashSet<Character> setBroken = new HashSet<>();
+        char[] strInTo = strIn.toUpperCase().toCharArray();
+
+        //chBroken是坏键
+        for (char chBroken:strInTo) {
+            if (!setAct.contains(chBroken) && !setBroken.contains(chBroken)) {
+                setBroken.add(chBroken);
+                System.out.print(chBroken);//7TI
+            }
+        }
+    }
+
 
 
