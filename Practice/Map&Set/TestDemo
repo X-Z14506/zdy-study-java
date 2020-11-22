@@ -138,3 +138,30 @@ public class Main {
         return map.get(head);
     }
 
+ //771. 宝石与石头
+    // 给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 
+    // S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+    // J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此"a"和"A"是不同类型的石头。
+
+    public int numJewelsInStones(String J, String S) {
+        HashSet<Character> hashSet = new HashSet<>();
+        int count = 0;
+
+        //先把宝石放到集合当中
+        char[] chJ = J.toCharArray();
+        for (char ch1 : chJ) {
+            hashSet.add(ch1);
+        }
+
+        //遍历石头，找到石头中的宝石
+        char[] chS = S.toCharArray();
+        for (char ch2 : chS) {
+            //找到一颗宝石，count自加一次；遍历完石头，count就是宝石数量
+            if (hashSet.contains(ch2)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
