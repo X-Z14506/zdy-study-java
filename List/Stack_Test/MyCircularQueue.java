@@ -64,3 +64,47 @@
         return true;
     }
 
+
+
+    //方法二
+    public static boolean backspaceCompare2(String S, String T) {
+        StringBuffer ret1 = new StringBuffer();
+        StringBuffer ret2 = new StringBuffer();
+        for (int i = 0; i < S.length();i++) {
+            char ch= S.charAt(i);
+            if (ch!= '#') {
+                ret1.append(ch);
+            }else {
+                if (ret1.length() > 0) {
+                    ret1.deleteCharAt(ret1.length()-1);
+                }
+            }
+        }
+        for(int i=0;i<ret1.length();i++){
+            if( ret1.charAt(i) == '#'){
+                ret1.deleteCharAt(i);
+            }
+        }
+        for (int j = 0; j < T.length();j++) {
+            char ch= T.charAt(j);
+            if (ch != '#') {
+                ret2.append(ch);
+            }else {
+                if (ret2.length() > 0) {
+                    ret2.deleteCharAt(ret2.length()-1);
+                }
+            }
+        }
+        for(int i=0;i<ret2.length();i++){
+            if( ret2.charAt(i) == '#'){
+                ret2.deleteCharAt(i);
+            }
+        }
+        String s1=ret1.toString();
+        String s2=ret2.toString();
+        return s1.equals(s2);
+    }
+
+
+
+
