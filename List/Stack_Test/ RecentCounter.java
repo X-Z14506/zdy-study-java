@@ -41,3 +41,19 @@ class RecentCounter {
     }
 }
 
+
+//法2
+class RecentCounter1 {
+    Queue<Integer> q;
+    public RecentCounter1() {
+        q = new LinkedList();
+    }
+
+    public int ping(int t) {
+        q.add(t);
+        while (q.peek() < t - 3000)
+            q.poll();
+        return q.size();
+    }
+}
+
