@@ -52,3 +52,29 @@ class User implements Comparable<User>{
         this.name = name;
     }
 
+/*   @Override
+    //倘若有多个属性的比较规则，按照如下方式写排序规则
+    public int compareTo(User o) {
+        if (this.age == o.age) {
+            //String类型内部已经重写了compareTo方法，比较的时候直接调用方法即可
+            //当年龄相等的时候比较name
+            return this.name.compareTo(o.name);
+        }else {
+            //年龄不想等就按照年龄比较
+            return  this.age - o.age;
+        }
+    }*/
+
+    @Override
+    public int compareTo(User o) {
+        return  this.age - o.age;//升序
+        // return  o.age - this.age;//降序
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "age=" + age +
+                '}';
+    }
+}
