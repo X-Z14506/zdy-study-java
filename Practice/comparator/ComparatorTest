@@ -48,3 +48,36 @@ public class ComparatorTest {
         }
     }
 }
+
+class WuGui {
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public WuGui(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "小乌龟{" +
+                "age=" + age +
+                '}';
+    }
+}
+
+//单独编写一个比较器
+class WuGuiComparator implements Comparator<WuGui> {
+    @Override
+    public int compare(WuGui o1, WuGui o2) {
+        //指定比较规则
+        //按照年龄排序
+        return o1.getAge() - o2.getAge();
+    }
+}
