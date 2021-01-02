@@ -1,0 +1,35 @@
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * File类的常用方法
+ */
+public class FileTest02 {
+    public static void main(String[] args) {
+        File file = new File("F:\\java错误录\\编译错误.txt");
+        //获取文件名
+        System.out.println("文件名："+file.getName());
+
+        //判断是否是一个目录
+        System.out.println(file.isDirectory());
+
+        //判断是否是一个文件
+        System.out.println(file.isFile());
+
+        //获取文件最后一次修改时间
+        long haoMiao = file.lastModified();//这个毫秒是从1970年到现在的总毫秒数
+        System.out.println(haoMiao);//1599916819744
+
+        //将总毫秒数转换成日期
+        Date date = new Date(haoMiao);
+        System.out.println(date);//Sat Sep 12 21:20:19 CST 2020
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        String string = simpleDateFormat.format(date);
+        System.out.println(string);
+
+        //获取文件大小（单位是字节）
+        System.out.println(file.length());//0(字节)
+    }
+}
