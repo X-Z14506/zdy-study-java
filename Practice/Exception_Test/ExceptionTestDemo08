@@ -1,0 +1,40 @@
+
+/*
+         try语句块中有return语句，return完方法结束，但是finally语句块的语句一定会执行，除非退出JVM，finally语句才不会执行
+ */
+ 
+ 
+public class ExceptionTestDemo08 {
+
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("try语句块执行...");
+            System.exit(0);//退出JVM，finally代码块的代码不会再执行
+        }finally {
+            System.out.println("finally语句块执行...");
+        }
+
+        /*
+                try语句块执行...
+
+         */
+    }
+
+
+    public static void main1(String[] args) {
+        try {
+            System.out.println("try语句块执行...");
+            return;
+        }finally {
+            System.out.println("finally语句块执行...");
+        }
+
+        //  System.out.println("ssd");   //Unreachable statement 没办法到达的声明，即不会走到这里就结束了
+
+        /*
+            try语句块执行...
+            finally语句块执行...
+         */
+    }
+}
