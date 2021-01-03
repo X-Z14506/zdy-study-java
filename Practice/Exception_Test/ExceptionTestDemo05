@@ -1,0 +1,31 @@
+
+//finally最终一定会执行
+
+public class ExceptionTestDemo05 {
+    public static void main(String[] args) {
+
+        int ret1 = m();
+        System.out.println(ret1);//101
+        int ret2 = n();
+        System.out.println(ret2);//100
+    }
+
+    private static int m() {
+        int i = 100;
+        try {
+            return i;
+        }finally {
+            i++;
+            return i;
+        }
+    }
+
+    private static int n() {
+        int i = 100;
+        try {
+            return i;
+        }finally {
+            i++;
+        }
+    }
+}
