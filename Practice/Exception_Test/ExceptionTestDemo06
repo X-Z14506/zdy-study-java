@@ -1,0 +1,38 @@
+
+
+/**
+ * 异常对象中有两个非常重要的方法：
+ *      获取异常简单的描述信息：
+ *          String msg = exception.getMessage();
+ *      打印异常追踪的堆栈信息：
+ *           exception.printStackTrace();
+ */
+ 
+ 
+public class ExceptionTestDemo06 {
+    public static void main(String[] args) {
+        //这里为了测试getMessage()方法，
+        // 只是new了异常对象，但是没有抛出，JVM会认为这是一个普通的java对象
+        NullPointerException e = new NullPointerException("空指针异常");
+        //获取异常简单的描述信息，这个信息实际上就是构造方法上面String参数
+        String msg = e.getMessage();
+        System.out.println(msg);//空指针异常
+
+
+        try {
+            m1();
+            System.out.println("已找到该文件");
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+            System.out.println("无法访问该文件");
+        }finally {
+            System.out.println("最后都要走这里");
+        }
+        System.out.println("hello world");
+    }
+
+    private static void m1() throws FileNotFoundException {
+        new FileInputStream("D:\\java软件工具\\apache-tomcat-8.5.57\\bin\\bootstrap.jar");
+    }
+
+}
