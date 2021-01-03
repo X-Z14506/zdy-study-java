@@ -1,0 +1,61 @@
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+
+/**
+ *   通常在finally语句块中完成资源的释放和关闭
+ *   因为finally中的代码比较有保障，即使try语句块中的代码出现异常，finally中的代码也会正常执行
+ */
+ 
+public class ExceptionTestDemo07 {
+    public static void main(String[] args) {
+
+        //创建输入流对象
+        FileInputStream fileInputStream = null;//声明位置应该放在全局变量，这样在finally语句块中才能执行
+        try {
+           /* //如果声明位置放在try语句块中，则是局部变量，则在finally语句块中用不了
+            FileInputStream fileInputStream = new FileInputStream("D:\\java软件工具\\apache-tomcat-8.5.57\\bin");*/
+            fileInputStream = new FileInputStream("D:\\java软件工具\\apache-tomcat-8.5.57\\bin");
+            String s = null;
+            s.toString();
+
+            //流使用完要关闭，因为流会占用资源
+            //即使上面代码出现异常，这个流也需要关闭，但是放在这里如果出现流就关闭不了，因此需要在finally语句块中关闭流对象
+            fileInputStream.close();
+            System.out.println("try语句块执行");
+        }catch (FileNotFoundException e1){
+            e1.printStackTrace();
+        }catch (IOException e2) {
+            e2.printStackTrace();
+        }catch (NullPointerException e3) {
+            e3.printStackTrace();
+        } finally {
+            System.out.println("finally语句块执行");
+            //不能直接关闭流，如果流为空，则会出现空指针异常，因此应该在finally语句块判断流是否为空，不为空的时候，关闭流
+           if (fileInputStream != null) {
+               try {
+                   fileInputStream.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+        }
+        System.out.println("hello world");
+    }
+
+    /*
+            java.io.FileNotFoundException: D:\java软件工具\apache-tomcat-8.5.57\bin (拒绝访问。)
+                at java.io.FileInputStream.open0(Native Method)
+                at java.io.FileInputStream.open(FileInputStream.java:195)
+                at java.io.FileInputStream.<init>(FileInputStream.java:138)
+                at java.io.FileInputStream.<init>(FileInputStream.java:93)
+                at exception.Test02.main(Test02.java:27)
+            finally语句块执行
+            hello world
+
+Process finished with exit code 0
+
+     */
+}
