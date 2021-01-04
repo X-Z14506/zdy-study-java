@@ -1,0 +1,25 @@
+
+
+
+public class Test {
+    public static void main(String[] args) {
+
+        //创建UserService对象
+        UserService userService = new UserService();
+
+        try {
+            userService.register("西安工程大学zdy","222");
+        }catch (IllegalNameException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //再创建一个UserService对象
+        UserService userService1 = new UserService();
+
+        try{
+            userService1.register("","0000");
+        } catch (IllegalNameException e) {
+            e.printStackTrace();
+        }
+    }
+}
