@@ -1,0 +1,37 @@
+/*
+    反编译Method
+ */
+public class ReflectTest09 {
+    public static void main(String[] args) throws ClassNotFoundException {
+        StringBuilder sb = new StringBuilder();
+        Class userServiceClass = Class.forName("reflect.UserService");
+        sb.append(Modifier.toString(userServiceClass.getModifiers())+" class "+userServiceClass.getSimpleName()+"{\n");
+
+        Method[] methods = userServiceClass.getDeclaredMethods();
+        for (Method method : methods) {
+             sb.append("\t");
+             sb.append(Modifier.toString(method.getModifiers()));
+             sb.append(" ");
+             sb.append(method.getReturnType().getSimpleName());
+
+             sb.append(" "+method.getName()+"(");
+
+
+             //参数列表
+            Class[] parameterTypes = method.getParameterTypes();
+            for (Class parameterType: parameterTypes) {
+                sb.append(parameterType.getSimpleName());
+                sb.append(",");
+            }
+            //删除指定下标位置上的字符
+            if (parameterTypes.length>0) {
+                sb.deleteCharAt(sb.length()-1);
+            }
+
+            sb.append("){}\n");
+        }
+
+        sb.append("}");
+        System.out.println(sb);
+    }
+}
