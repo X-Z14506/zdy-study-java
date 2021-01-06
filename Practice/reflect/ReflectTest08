@@ -1,0 +1,38 @@
+/*
+    反射Method
+ */
+public class ReflectTest08 {
+    public static void main(String[] args) throws ClassNotFoundException {
+        //获取到类
+        Class useServiceClass = Class.forName("reflect.UserService");
+
+        //获取所有的Method(包括私有的)
+        Method[] methods = useServiceClass.getDeclaredMethods();
+
+        System.out.println(methods.length);
+
+        //遍历Method
+        for (Method method : methods) {
+
+            //获取修饰符列表
+            System.out.print(Modifier.toString(method.getModifiers())+" ");
+
+            //获取方法的返回值类型
+            System.out.print(method.getReturnType().getSimpleName()+" ");
+
+            //获取方法名
+            System.out.print(method.getName()+" ");
+
+            //方法的参数列表（一个方法的参数可能会有多个）
+            Class[] parameterTypes = method.getParameterTypes();
+            for (Class parameterType : parameterTypes) {
+                System.out.print(parameterType.getSimpleName()+" ");
+            }
+
+            System.out.println();
+
+
+        }
+
+    }
+}
