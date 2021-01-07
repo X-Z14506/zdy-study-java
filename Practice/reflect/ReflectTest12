@@ -1,0 +1,32 @@
+/**
+ * 使用反射机制创建对象
+ */
+ 
+ 
+public class c {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        //不使用反射机制创建对象
+        System.out.println("==============不使用反射机制创建对象=================");
+        Vip vip1 = new Vip();
+        Vip vip2 = new Vip(001,"zhangSan","男",21);
+        System.out.println(vip1);
+        System.out.println(vip2);
+        System.out.println();
+
+
+        //使用反射机制创建对象
+        System.out.println("================使用反射机制创建对象=============");
+        Class c = Class.forName("reflect.Vip");
+
+        //调用无参数构造方法
+        Object object = c.newInstance();
+        System.out.println(object);
+
+        //调用有参数的构造方法
+        //第一步：现货区到这个有参数的构造方法
+        Constructor constructor = c.getDeclaredConstructor(int.class,String.class,String.class,int.class);
+        //第二步：采用构造方法new对象
+        Object object1 = constructor.newInstance(002, "lisi", "女", 20);
+        System.out.println(object1);
+    }
+}
