@@ -1,0 +1,12 @@
+/*
+    反射属性Field
+ */
+public class Student {
+
+    //Field就是属性/成员
+    //4个Filed，分别采用了不同的访问控制权限修饰符
+    public int no;
+    private String name;
+    protected int age;
+    boolean sex;
+}
