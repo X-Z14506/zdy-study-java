@@ -1,0 +1,13 @@
+public class User {
+
+
+
+    public User() {
+        System.out.println("无参数构造方法");
+    }
+
+    //定义了有参数构造方法，如果不定义无参构造方法，无参数构造方法就不存在了
+    public User(String name) {
+        System.out.println("有参数构造方法");
+    }
+}
