@@ -1,0 +1,58 @@
+/**
+ * 模拟两个线程同时对一个账户进行取款操作
+ *
+ * 银行账户类
+ *    不使用线程同步机制的话，多线程对同一个账户进行取款，出现线程安全问题
+ */
+ 
+ 
+public class Account {
+    //账号
+    private String no;
+    //余额
+    private double balance;
+
+    public Account() {
+
+    }
+
+    public Account(String no, double balance) {
+        this.no = no;
+        this.balance = balance;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    //取款方法
+    public void withdraw(double money) {
+        //t1和t2并发这个方法（t1和t2是两个栈，两个栈操作堆中同一个对象）
+        //取款之前的余额
+        double before = this.getBalance();
+        //取款之后的余额
+        double after = this.getBalance() - money;
+
+        //在这里模拟一下网络延迟，百分百会出问题
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //更新余额
+        //若t1执行到这里还没有执行这行代码，t2线程进来执行了，此时一定会出问题
+        this.setBalance(after);
+    }
+}
