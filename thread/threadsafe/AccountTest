@@ -1,0 +1,18 @@
+
+public class AccountTest {
+    public static void main(String[] args) {
+        //创建账户对象（只创建一个）
+        Account account = new Account("001", 10000);
+        //创建两个线程,共享一个账户
+        Thread t1 = new AccountThread(account);
+        Thread t2 = new AccountThread(account);
+
+        //设置name
+        t1.setName("t1");
+        t2.setName("t2");
+
+        //启动线程
+        t1.start();
+        t2.start();
+    }
+}
