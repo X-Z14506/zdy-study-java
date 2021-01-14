@@ -1,0 +1,13 @@
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyAnnotation {
+    /*
+    username属性
+     */
+    String username();
+    /*
+    password属性
+     */
+    String password();
+}
