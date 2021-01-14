@@ -1,0 +1,66 @@
+/**
+ * 枚举：一枚一枚可以列举出来的，才建议使用枚举类型
+ * 枚举编译后也是生成class文件
+ * 枚举也是一种引用数据类型
+ * 枚举中的每一个值可以看做是常量
+ */
+
+public class EnumTest {
+    public static void main(String[] args) {
+        Result result = divide(10,2);
+        System.out.println(result == Result.SUCCESS ? "计算成功" : "计算失败");//计算成功
+        Result result1 = divide(10,0);
+        System.out.println(result1 == Result.SUCCESS ? "计算成功" : "计算失败");//计算失败
+    }
+
+   /*
+       这个方法只有两种结果，true或false，但是若结果类型很多，
+       这个方法不适用，应该使用枚举
+   public static boolean divide(int a,int b) {
+        try {
+            int c = a/b;
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
+    }
+    */
+
+    /**
+     * 计算两个int类型数据的商
+     * @param a int数据
+     * @param b int数据
+     * @return Result.SUCCESS表示成功，Result.FAIL表示失败
+     */
+   public static Result divide(int a,int b) {
+       try {
+           int c = a/b;
+           return Result.SUCCESS;
+       }catch (Exception e) {
+           return Result.FAIL;
+       }
+   }
+}
+
+enum Result {
+    //SUCCESS 是枚举Result类型中的一个值
+    //FAIL 是枚举Result 类型中的一个值
+    //枚举中的每一个值，可以看做是“常量”
+    SUCCESS,FAIL
+}
+
+//枚举类型举例
+enum Season {
+    /*
+       春夏秋冬
+     */
+    SPRING,SUMMER,AUTUMN,WINTER
+}
+enum Color {
+    /*
+       颜色
+     */
+    BLACK,WHITE,RED,GREEN,YELLOW,BLUE,GRAY,PINK
+}
+
+
