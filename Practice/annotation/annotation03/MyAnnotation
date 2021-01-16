@@ -1,0 +1,8 @@
+//表示这个注解只能出现在类上面
+@Target(ElementType.TYPE)
+//表示该注解可以被反射机制读取到
+@Retention(RetentionPolicy.RUNTIME)
+//这个注解@MyAnnotation用来标注类，被标注的类中必须有一个int类型的id属性，没有就报异常
+public @interface MyAnnotation {
+
+}
